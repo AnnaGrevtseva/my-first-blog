@@ -15,5 +15,20 @@
         {% endif %}
         <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
+
+        <hr>
+
+        {% for comment in comments %}
+            <div class="comment">
+                <div class="date">
+                    {{ comment.created_date }}
+                </div>
+                <strong>{{ comment.author }}</strong>
+                <p>{{ comment.text|linebreaks }}</p>
+            </div>
+        {%endfor%}
+        <div>
+            <p>No comments here yet :(</p>
+        </div>
     </div>
 {% endblock %}
