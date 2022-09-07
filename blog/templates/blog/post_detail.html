@@ -17,8 +17,8 @@
         <p>{{ post.text|linebreaksbr }}</p>
 
         <hr>
-
-        {% for comment in comments %}
+        <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}" >Add comment</a>
+        {% for comment in post.comments.all %}
             <div class="comment">
                 <div class="date">
                     {{ comment.created_date }}
@@ -26,9 +26,11 @@
                 <strong>{{ comment.author }}</strong>
                 <p>{{ comment.text|linebreaks }}</p>
             </div>
+        {% empty %}
+            <div>
+                <p>No comments here yet :(</p>
+            </div>
         {%endfor%}
-        <div>
-            <p>No comments here yet :(</p>
-        </div>
     </div>
+
 {% endblock %}
